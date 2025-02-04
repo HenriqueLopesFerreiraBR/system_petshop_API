@@ -58,18 +58,24 @@ class ProductController {
     try {
       const { id } = req.params;
 
-      const {name,price,stock} = req.body
+      const {name,description, price,weightKg} = req.body
+      const product = await Product.findByPk(id)
 
-      const updateProduct={
-        name:name,
-        price:price,
-        stock:stock
+      if (!product) {
+        return res.status(404).json({ message: 'Produto não encontrado.' });
       }
 
-      const [updated] = await Product.update(updateProduct, { where: { id } });
-      if (!updated) return res.status(404).json({ error: 'Product not found' });
-      const updatedProduct = await Product.findByPk(id);
-      return res.status(200).json(updatedProduct);
+      product.name = name || product.name;
+      product.price = price || product.price;
+      product.description = description || product.description 
+      product.weightKg = weightKg || product.weightKg
+
+      // const [updated] = await Product.update(updateProduct, { where: { id } });
+      // if (!updated) return res.status(404).json({ error: 'Product not found' });
+      // const updatedProduct = await Product.findByPk(id);
+
+      await product.save();
+      return res.status(200).json(product);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }

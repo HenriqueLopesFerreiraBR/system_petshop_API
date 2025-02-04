@@ -1,4 +1,4 @@
-const { Client } = require('../models/Client');
+const  Client  = require('../models/Client');
 
 class ClientController {
   // Método para criar um novo cliente
@@ -12,6 +12,12 @@ class ClientController {
       }
       if (!cnpj) {
         return res.status(400).json({ message: 'O campo "cnpj" é obrigatório.' });
+      }
+
+      const clientExit = await Client.findOne({where:{cnpj:cnpj}});
+
+      if(clientExit){
+        return res.status(433).json({ message: 'Já existe um cliente com esse CPF ou CNPJ.' });
       }
 
       const newClient = await Client.create({ name, email, cnpj, phone, address, active });
