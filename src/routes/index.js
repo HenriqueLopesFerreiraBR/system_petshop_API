@@ -6,6 +6,7 @@ const SupplierRoutes = require("./SupplierRoutes");
 const PurchaseRoutes = require("./PurchaseRoutes");
 const OrderRoutes = require("./OrderRoutes");
 const EnterProductRoutes = require("./enterProductRoutes");
+const StockRoutes = require("./StockRoutes");
 // Outras rotas aqui...
 
 const app = express();
@@ -16,5 +17,6 @@ app.use("/supplier", SupplierRoutes);
 app.use("/purchase", PurchaseRoutes);
 app.use("/order", OrderRoutes);
 app.use("/enter-product", EnterProductRoutes);
+app.use("/stock", StockRoutes);
 
 module.exports = app;

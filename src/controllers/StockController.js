@@ -1,4 +1,4 @@
-const { Stock } = require('../models/Stock');
+const Stock  = require('../models/Stock');
 
 class StockController {
   // Método para criar um novo registro de estoque
