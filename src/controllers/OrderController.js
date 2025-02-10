@@ -1,4 +1,4 @@
-const { Order } = require('../models/Order');
+const  Order  = require('../models/Order');
 
 class OrderController {
   // Método para criar um novo pedido
