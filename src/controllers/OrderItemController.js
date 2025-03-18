@@ -1,17 +1,21 @@
-const  Order  = require('../models/Order');
+const  OrderItem  = require('../models/OrderItem');
 
 class OrderController {
   // Método para criar um novo pedido
   async create(req, res) {
     try {
-      const { total } = req.body;
+      const { orderId,productId, value, quantity, total } = req.body;
+
+      let value1 = parseFloat(value)
+      let total1 = (value1*quantity)
+
 
       // Validações
-      if (!total) {
+      if (!productId || !value || !quantity || !total) {
         return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
       }
-      const newOrder = await Order.create({ total});
-      return res.status(201).json(newOrder);
+      const newOrderItem = await OrderItem.create({ orderId,productId, quantity, value:value1, total:value1 });
+      return res.status(201).json(newOrderItem);
     } catch (error) {
       console.error('Erro ao criar pedido:', error);
       return res.status(500).json({ message: 'Erro interno do servidor.' });
@@ -21,8 +25,8 @@ class OrderController {
   // Método para listar todos os pedidos
   async getAll(req, res) {
     try {
-      const orders = await Order.findAll();
-      return res.status(200).json(orders);
+      const orderItens = await OrderItem.findAll();
+      return res.status(200).json(orderItens);
     } catch (error) {
       console.error('Erro ao listar pedidos:', error);
       return res.status(500).json({ message: 'Erro interno do servidor.' });
@@ -33,13 +37,13 @@ class OrderController {
   async getById(req, res) {
     try {
       const { id } = req.params;
-      const order = await Order.findByPk(id);
+      const orderItem = await OrderItem.findByPk(id);
 
-      if (!order) {
+      if (!orderItem) {
         return res.status(404).json({ message: 'Pedido não encontrado.' });
       }
 
-      return res.status(200).json(order);
+      return res.status(200).json(orderItem);
     } catch (error) {
       console.error('Erro ao buscar pedido:', error);
       return res.status(500).json({ message: 'Erro interno do servidor.' });
@@ -50,21 +54,20 @@ class OrderController {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { total } = req.body;
+      const { idProduct, quantity, value } = req.body;
 
-      const order = await Order.findByPk(id);
+      const orderItem = await OrderItem.findByPk(id);
 
-      if (!order) {
+      if (!orderItem) {
         return res.status(404).json({ message: 'Pedido não encontrado.' });
       }
 
       // Atualiza apenas os campos fornecidos
-      order.idProduct = idProduct || order.idProduct;
-      order.quantity = quantity || order.quantity;
-      order.total = total || order.total;
-      order.total = total || order.total;
+      OrderItem.idProduct = idProduct || OrderItem.idProduct;
+      OrderItem.quantity = quantity || OrderItem.quantity;
+      OrderItem.value = value || OrderItem.value;
 
-      await order.save();
+      await OrderItem.save();
 
       return res.status(200).json(order);
     } catch (error) {
@@ -78,13 +81,13 @@ class OrderController {
     try {
       const { id } = req.params;
 
-      const order = await Order.findByPk(id);
+      const orderItem = await OrderItem.findByPk(id);
 
-      if (!order) {
+      if (!orderItem) {
         return res.status(404).json({ message: 'Pedido não encontrado.' });
       }
 
-      await order.destroy();
+      await OrderItem.destroy();
       return res.status(200).json({ message: 'Pedido excluído com sucesso.' });
     } catch (error) {
       console.error('Erro ao excluir pedido:', error);

@@ -8,7 +8,7 @@ const Product = sequelize.define(
         id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
         name: { type: DataTypes.STRING, allowNull: false },
         description: { type: DataTypes.STRING },
-        price: { type: DataTypes.FLOAT, allowNull: false },
+        saleValue: { type: DataTypes.FLOAT, allowNull: false },
         weightKg:{type:DataTypes.FLOAT},
         // stock_id: { type: DataTypes.INTEGER, allowNull: false },
     },

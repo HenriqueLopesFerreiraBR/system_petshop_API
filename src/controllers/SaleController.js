@@ -1,4 +1,4 @@
-const { Sale } = require('../models/Sale');
+const Sale = require('../models/Sale')
 
 class SaleController {
   // Método para criar uma nova venda
@@ -6,7 +6,7 @@ class SaleController {
     try {
       const { clientId, orderId, total } = req.body;
 
-      // Validações
+      //Validações
       if (!clientId) {
         return res.status(400).json({ message: 'O campo "clientId" é obrigatório.' });
       }

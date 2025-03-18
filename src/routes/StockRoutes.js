@@ -7,7 +7,7 @@ router.get('/', StockController.getAll);
 router.get('/:id', StockController.getById);
 router.put('/:id', StockController.update);
 router.delete('/:id', StockController.delete);
-router.put('/addProduct/:id', StockController.addProduct);
-router.put('/removeProduct/:id', StockController.removeProduct);
+router.put('/addProduct/', StockController.addProduct);
+router.put('/removeProduct/', StockController.removeProduct);
 
 module.exports = router;

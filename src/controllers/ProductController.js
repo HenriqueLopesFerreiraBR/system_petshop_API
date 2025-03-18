@@ -4,12 +4,12 @@ class ProductController {
   async create(req, res) {
 
     try {
-      const {name,description, price,weightKg} = req.body
+      const {name,description, saleValue,weightKg} = req.body
 
       if (!name || name.trim() === "") { // Simplifica a verificação do nome
         return res.status(400).json({ message: 'O nome não pode ser vazio' });
       }
-      if (!price || price.trim() === "") { // Simplifica a verificação do nome
+      if (!saleValue || saleValue.trim() === "") { // Simplifica a verificação do nome
         return res.status(400).json({ message: 'O nome não pode ser vazio' });
       }
 
@@ -22,7 +22,7 @@ class ProductController {
       const newProduct={
         name:name,
         description:description,
-        price:price,
+        saleValue:saleValue,
         weightKg:weightKg
         
       }
@@ -58,7 +58,7 @@ class ProductController {
     try {
       const { id } = req.params;
 
-      const {name,description, price,weightKg} = req.body
+      const {name,description, saleValue,weightKg} = req.body
       const product = await Product.findByPk(id)
 
       if (!product) {
@@ -66,7 +66,7 @@ class ProductController {
       }
 
       product.name = name || product.name;
-      product.price = price || product.price;
+      product.saleValue = saleValue || product.saleValue;
       product.description = description || product.description 
       product.weightKg = weightKg || product.weightKg
 
