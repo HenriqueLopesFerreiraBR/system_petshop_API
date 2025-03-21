@@ -106,7 +106,7 @@ class StockController {
         return res.status(400).json({ message: 'O campo "quantity" deve ser um valor positivo.' });
       }
 
-      const stock = await Stock.findOne({ where: { productId } });
+      const stock = await Stock.findOne({ where: { productId:productId } });
 
       if (stock) {
         stock.quantity += quantity;
