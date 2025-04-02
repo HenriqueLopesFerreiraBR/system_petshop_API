@@ -109,7 +109,7 @@ class StockController {
       const stock = await Stock.findOne({ where: { productId:productId } });
 
       if (stock) {
-        stock.quantity += quantity;
+        stock.quantity += parseFloat(quantity);
         await stock.save();
         return res.status(200).json(stock);
       } else {
@@ -144,7 +144,7 @@ class StockController {
         return res.status(400).json({ message: 'Quantidade insuficiente no estoque.' });
       }
 
-      stock.quantity -= quantity;
+      stock.quantity -= parseFloat(quantity);
 
       if (stock.quantity === 0) {
         await stock.destroy();
