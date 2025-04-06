@@ -47,7 +47,7 @@ const EnterProduct = sequelize.define("EnterProduct", {
   timestamps: true,
 });
 
-// EnterProduct.sync({force:true})
+EnterProduct.sync({force:false})
 
 
 module.exports = EnterProduct;

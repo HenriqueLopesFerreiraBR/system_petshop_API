@@ -12,6 +12,6 @@ const Client = sequelize.define('Client', {
   active:{ type: DataTypes.STRING }
 
 },{timestamps:true});
-// Client.sync({force:true})
+Client.sync({force:false})
 
 module.exports = Client;

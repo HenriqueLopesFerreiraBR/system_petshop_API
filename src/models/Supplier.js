@@ -10,4 +10,4 @@ const Supplier = sequelize.define('Supplier', {
   contact: { type: DataTypes.STRING },
 });
 
-module.exports = new Supplier;
+module.exports = Supplier;
