@@ -10,5 +10,6 @@ const Purchase = sequelize.define('Purchase', {
   quantity: { type: DataTypes.FLOAT, allowNull: false },
   total_value: { type: DataTypes.FLOAT, allowNull: false },
 },{timestamps:true});
+Purchase.sync({force:false})
 
 module.exports =new Purchase;

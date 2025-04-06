@@ -24,6 +24,6 @@ Client.hasMany(Sale, { foreignKey: 'clientId' });
 Sale.belongsTo(Order, { foreignKey: 'orderId' });
 Order.hasMany(Sale, { foreignKey: 'orderId' });
 
-Sale.sync({force:true})
+Sale.sync({force:false})
 
 module.exports = Sale;

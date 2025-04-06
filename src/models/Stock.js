@@ -12,5 +12,5 @@ const Stock = sequelize.define(
     },
     { timestamps: true }
 );
-
+Stock.sync({force:false})
 module.exports = Stock;

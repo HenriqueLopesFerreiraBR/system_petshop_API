@@ -27,6 +27,6 @@ Product.hasMany(OrderItem, { foreignKey: 'productId' });
 OrderItem.belongsTo(Order, { foreignKey: 'orderId' });
 Order.hasMany(OrderItem, { foreignKey: 'orderId' });
 
-OrderItem.sync({force:true})
+OrderItem.sync({force:false})
 
 module.exports =  OrderItem;
