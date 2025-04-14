@@ -1,4 +1,4 @@
-const { Supplier } = require('../models/Supplier');
+const  Supplier  = require('../models/Supplier');
 
 class SupplierController {
   // Método para criar um novo fornecedor

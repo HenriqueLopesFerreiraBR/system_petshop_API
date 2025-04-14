@@ -33,6 +33,7 @@ class AccountsPayController {
       });
       res.status(200).json(accounts);
     } catch (error) {
+      console.log(error)
       res.status(500).json({ error: 'Erro ao buscar contas a pagar', details: error.message });
     }
   }
@@ -101,4 +102,4 @@ class AccountsPayController {
   }
 }
 
-module.exports =  AccountsPayController;
+module.exports = AccountsPayController;

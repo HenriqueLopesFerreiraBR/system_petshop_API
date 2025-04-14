@@ -20,7 +20,7 @@ const app = express();
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/clients", ClientRoutes);
-app.use("/supplier", SupplierRoutes);
+app.use("/suppliers", SupplierRoutes);
 app.use("/purchase", PurchaseRoutes);
 app.use("/order", OrderRoutes);
 app.use("/enter-product", EnterProductRoutes);
