@@ -7,6 +7,7 @@ class EnterProductController {
       const enterProduct = await EnterProduct.create(req.body);
       res.status(201).json(enterProduct);
     } catch (error) {
+      console.log(error)
       res.status(400).json({ error: error.message });
     }
   }

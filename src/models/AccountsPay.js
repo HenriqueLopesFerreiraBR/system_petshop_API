@@ -14,7 +14,7 @@ const AccountsPay = sequelize.define("AccountsPay",{
     },
     status: {
       type: DataTypes.STRING,
-      defaultValue: "pendente",
+      defaultValue: "Pendente",
     },
     paymentMethod: {
       type: DataTypes.STRING,
