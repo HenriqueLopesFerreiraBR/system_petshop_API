@@ -44,7 +44,7 @@ class UserController {
       if (!validPassword) return res.status(401).json({ message: 'Senha Invalida' });
 
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1d' });
-      res.json({ token });
+      res.json({ token,user });
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
