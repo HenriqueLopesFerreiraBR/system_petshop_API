@@ -10,15 +10,15 @@ class ClientController {
       if (!name) {
         return res.status(400).json({ message: 'O campo "name" é obrigatório.' });
       }
-      if (!cnpj) {
-        return res.status(400).json({ message: 'O campo "cnpj" é obrigatório.' });
-      }
+      // if (!cnpj) {
+      //   return res.status(400).json({ message: 'O campo "cnpj" é obrigatório.' });
+      // }
 
       const clientExit = await Client.findOne({where:{cnpj:cnpj}});
 
-      if(clientExit){
-        return res.status(433).json({ message: 'Já existe um cliente com esse CPF ou CNPJ.' });
-      }
+      // if(clientExit){
+      //   return res.status(433).json({ message: 'Já existe um cliente com esse CPF ou CNPJ.' });
+      // }
 
       const newClient = await Client.create({ name, email, cnpj, phone, address, active });
       return res.status(201).json(newClient);

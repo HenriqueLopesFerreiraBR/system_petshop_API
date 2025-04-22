@@ -15,12 +15,14 @@ const CashFlowRoutes = require("./cashFlowRoutes");
 const FinancialCategoryRoutes = require("./FinancialCategoryRoutes");
 const TransactionRoutes = require("./TransactionRoutes");
 const EmpriseRoutes = require("./EmpriseRoutes");
+const PaymentMethodRoutes = require("./PaymentMethodRoutes");
 // Outras rotas aqui...
 
 const app = express();
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/clients", ClientRoutes);
+app.use("/payment-methods", PaymentMethodRoutes);
 app.use("/suppliers", SupplierRoutes);
 app.use("/purchase", PurchaseRoutes);
 app.use("/order", OrderRoutes);
