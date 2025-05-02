@@ -17,6 +17,9 @@ const TransactionRoutes = require("./TransactionRoutes");
 const EmpriseRoutes = require("./EmpriseRoutes");
 const PaymentMethodRoutes = require("./PaymentMethodRoutes");
 const ServiceRoutes = require("./ServiceRoutes");
+const SaleServiceRoutes = require("./SaleServiceRoutes");
+const OrderServiceRoutes = require("./OrderServiceRoutes");
+const OrderServiceItemRoutes = require("./OrderServiceItemRoutes");
 // Outras rotas aqui...
 
 const app = express();
@@ -38,5 +41,8 @@ app.use("/financial-category", FinancialCategoryRoutes);
 app.use("/transaction", TransactionRoutes);
 app.use("/emprises", EmpriseRoutes);
 app.use("/services", ServiceRoutes);
+app.use("/orderServices", OrderServiceRoutes);
+app.use("/orderServiceItens", OrderServiceItemRoutes);
+app.use("/salesServices", SaleServiceRoutes);
 
 module.exports = app;
