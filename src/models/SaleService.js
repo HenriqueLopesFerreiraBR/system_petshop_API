@@ -9,7 +9,7 @@ const SaleService = sequelize.define(
     "SaleService",
     {
         id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-        ServiceId: { type: DataTypes.INTEGER, allowNull: false },
+        clientId: { type: DataTypes.INTEGER, allowNull: false },
         orderServiceId: { type: DataTypes.INTEGER, allowNull: false },
         total: { type: DataTypes.FLOAT, allowNull: false },
     },

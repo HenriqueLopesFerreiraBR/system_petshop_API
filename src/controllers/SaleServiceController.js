@@ -4,11 +4,11 @@ class SaleServiceController {
   // Método para criar uma nova venda
   async create(req, res) {
     try {
-      const { serviceId, orderServiceId, total } = req.body;
+      const { clientId, orderServiceId, total } = req.body;
 
       //Validações
-      if (!serviceId) {
-        return res.status(400).json({ message: 'O campo "serviceId" é obrigatório.' });
+      if (!clientId) {
+        return res.status(400).json({ message: 'O campo "clientId" é obrigatório.' });
       }
       if (!orderServiceId) {
         return res.status(400).json({ message: 'O campo "orderServiceId" é obrigatório.' });
@@ -17,7 +17,7 @@ class SaleServiceController {
         return res.status(400).json({ message: 'O campo "total" é obrigatório.' });
       }
 
-      const newSale = await SaleService.create({ serviceId, orderServiceId, total });
+      const newSale = await SaleService.create({ clientId, orderServiceId, total });
       return res.status(201).json(newSale);
     } catch (error) {
       console.error('Erro ao criar venda:', error);
@@ -57,7 +57,7 @@ class SaleServiceController {
   async update(req, res) {
     try {
       const { id } = req.params;
-      const { serviceId, orderServiceId, total } = req.body;
+      const { clientId, orderServiceId, total } = req.body;
 
       const sale = await SaleService.findByPk(id);
 
@@ -66,7 +66,7 @@ class SaleServiceController {
       }
 
       // Atualiza apenas os campos fornecidos
-      sale.serviceId = serviceId || sale.serviceId;
+      sale.clientId = clientId || sale.clientId;
       sale.orderServiceId = orderServiceId || sale.orderServiceId;
       sale.total = total || sale.total;
 
