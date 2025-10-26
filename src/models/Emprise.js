@@ -13,6 +13,6 @@ const Emprise = sequelize.define('Emprise', {
 
 });
 
- //Emprise.sync({force:true})
+ Emprise.sync({force:true})
 
 module.exports = Emprise;
